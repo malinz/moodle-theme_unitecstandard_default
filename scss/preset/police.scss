@@ -89,6 +89,10 @@ div.book_toc_bullets div.action-list a i:before, div.book_toc_indented div.actio
 ##################### VARIABLES - CHANGE THEME COLOR AND IMAGES #############################################
 ############################################################################################################*/
 
+/*##########################################################################
+#################### SET BRAND COLOR TO #007ca3 ############################
+###########################################################################*/
+
 /*######################################################
 ######################## NAVBAR ########################
 #######################################################*/
@@ -109,7 +113,7 @@ nav.fixed-top {
 // Places Unitec Moodle Logo on the left-hand side of the header
 header .page-header-headings {
     height: 80px;
-    margin: 5px 0px 10px 0px; // Use this to match the fractal and overlay heights
+    margin: 5px 0px 5px 0px; // Use this to match the fractal and overlay heights
     //background-image: url([[pix:theme|UnitecLogo-01]]); // Background image in Pix directory
     // background-image: url('https://moodle.unitec.ac.nz/pluginfile.php/897385/mod_page/content/12/UnitecLogoNew-02.png'); // alternative web URL
     //background-size: 173px 75px;
@@ -134,13 +138,13 @@ header .page-header-headings {
 
 // Add overlay image over the Background Banner
 @media only screen and (min-width: 1050px) {
-    header#page-header div.card div.card-body div.d-flex {
+    header#page-header div div.card div.card-body {
         background-image: url([[pix:theme|PoliceMaoriMotifTransparent3]]); // Background image in Pix directory option 1
         //background-image: url([[pix:theme|Overlay-02]]); // Background image in Pix directory option 2
         //background-image: url([[pix:theme|Overlay-03]]); // Background image in Pix directory option 3
         //background-image: url('https://moodle.unitec.ac.nz/pluginfile.php/897385/mod_page/content/12/UnitecLogoNew-02.png'); // alternative web URL
-        background-size: auto 95px;
-        background-position: 90% top; // Fractal position
+        background-size: auto 93px;
+        background-position: 90% 12%; // Fractal position
         background-repeat: no-repeat; // Display fractal once only
         background-attachment: scroll; // Scroll with page
     }
@@ -158,15 +162,24 @@ header .page-header-headings {
 // Background, margin and padding to settings action menu in the banner with editing on and off
 div.context-header-settings-menu div.action-menu div.action-menu-trigger {
     background-color: #007ca3;
-    border: 0.5px solid #fff; // rgba(255, 255, 255, 0.5)
+    border: 0.5px solid #007ca3; // rgba(255, 255, 255, 0.5)
     padding: 3px 5px 3px 5px;
-    margin: 20px 15px 0px 0px; //position the action menu dropdown within the header
+    margin: 0px 20px 0px 0px; //position the action menu dropdown within the header
 }
 
 // Removes solid border and background images from the action menu dropdown container and breadcrumb because .d-flex has no ID
 #page-header div.d-flex.flex-wrap, #page-header div.d-flex.flex-wrap div.ml-auto.d-flex, div.context-header-settings-menu div.action-menu div.menubar.d-flex {
     border: none !important;
     background-image: none !important;
+}
+
+// action menu focus background color settings
+div#action-menu-2-menu div.dropdown-item:active, div#action-menu-10-menu div.dropdown-item:active,
+div#action-menu-2-menu div.dropdown-item.dropdown-item:hover, div#action-menu-10-menu div.dropdown-item.dropdown-item:hover,
+div#action-menu-2-menu div.dropdown-item.dropdown-item:focus, div#action-menu-10-menu div.dropdown-item.dropdown-item:focus,
+div#action-menu-2-menu div.dropdown-item.dropdown-item:focus-within, div#action-menu-10-menu div.dropdown-item.dropdown-item:focus-within {
+    outline: 0;
+    background-color: #007ca3;
 }
 
 /*#######################################################
@@ -242,7 +255,8 @@ div.usermenu div.action-menu-trigger {
 }
 
 // Color and hover color for the user name and caret in the navbar
-ul.nav li.nav-item div.usermenu div.action-menu div.menubar div.action-menu-trigger div.dropdown a.dropdown-toggle {
+ul.nav li.nav-item div.usermenu div.action-menu#action-menu-1 div.menubar div.action-menu-trigger div.dropdown a.dropdown-toggle,
+ul.nav li.nav-item div.usermenu div.action-menu#action-menu-9 div.menubar div.action-menu-trigger div.dropdown a.dropdown-toggle{
     color: #fff;
     @include hover-focus {
         color: #999;
@@ -250,7 +264,7 @@ ul.nav li.nav-item div.usermenu div.action-menu div.menubar div.action-menu-trig
 }
 
 // Color and hover color for the icons in the navbar
-div.popover-region-toggle.nav-link i.icon, nav ul li div i.icon:before {
+div.popover-region-toggle.nav-link i.icon, nav ul li div.popover-region i.icon:before {
     color: #fff !important;
     @include hover-focus {
         background: transparent;
@@ -265,9 +279,9 @@ div.d-none.d-lg-block {
 }
 
 // Color and hover color for the search icon in the navbar
-div.search-input-wrapper.nav-link i.icon {
-    color: #666;
-}
+/*div.search-input-wrapper.nav-link i.icon {
+    color: #fff;
+}*/
 
 /*######################################################
 ################ CUSTOM MENU FONT COLOR ################
@@ -319,7 +333,7 @@ header#page-header div.col-12 {
 }
 
 header {
-    margin: 30px 0px 0px 0px !important;
+    margin: 25px 0px 0px 0px !important;
 }
 
 /*#######################################################
@@ -359,16 +373,18 @@ div#nav-drawer {
 
 // Removes the top 50px margin from the page
 div#page {
-    margin: 0px 0px 0px 0px !important;
+    margin: 0px !important;
     padding: 0px !important;
     max-width: 100% !important;
-    }
+}
 
 // Removes the bottom padding from the page content
 div#page-content {
-    padding: 0px !important;
     margin: 0px !important;
+    padding: 0px !important;
+    max-width: 100% !important;
 }
+
 
 // Removes the bottom padding from the page wrapper
 div#page-wrapper {
@@ -379,12 +395,12 @@ div#page-wrapper {
 section#region-main {
     margin: 0px !important;
     padding: 0px !important;
-    }
+}
 
 // Removes the side padding from region-main-box
 div#region-main-box {
     padding: 0px !important;
-    }
+}
 
 /*######################################################
 ######################## FOOTER ########################
@@ -414,32 +430,14 @@ section.block.block_html.card.mb-3 {
     margin: 0px !important;
 }
 
-
 //Removes the padding in the custom block regions
 
-// Left Block Region
-.columnleft.blockcolumn {
-    padding: 0px 16px 0px 0px !important;
-}
-
+// Right Block Region
 #block-region-side-pre .block.block_html .card-body {
     padding: 0px !important;
 }
 
 #block-region-side-pre .block .card-body .card-text {
-    margin: 0px !important;
-}
-
-// Right Block Region
-.columnright.blockcolumn {
-    padding: 0px 0px 0px 16px !important;
-}
-
-#block-region-side-post .block.block_html .card-body {
-    padding: 0px !important;
-}
-
-#block-region-side-post .block .card-body .card-text {
     margin: 0px !important;
 }
 
