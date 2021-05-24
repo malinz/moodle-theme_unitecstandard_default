@@ -1,4 +1,4 @@
-/*################### DEFAULT SCSS - CLASSIC UNITEC ####################################################*/
+/*################### DEFAULT SCSS - BOOST UNITEC ######################################################*/
 
 // Bootstrap variables
 $white: #fff !default;
@@ -77,8 +77,10 @@ body {
     border-radius: 0%;
 }
 
-/*################### CUSTOM SCSS - CLASSIC UNITEC #######################################################*/
+/*################### CUSTOM SCSS - BOOST UNITEC #######################################################*/
 
+
+// solves rendering issues with h5p editor
 div.book_toc_numbered div.action-list a i:before, div.book_toc_none div.action-list a i:before, 
 div.book_toc_bullets div.action-list a i:before, div.book_toc_indented div.action-list a i:before {
     color: #666 !important;
@@ -88,6 +90,12 @@ div.book_toc_bullets div.action-list a i:before, div.book_toc_indented div.actio
 /*###########################################################################################################
 ##################### VARIABLES - CHANGE THEME COLOR AND IMAGES #############################################
 ############################################################################################################*/
+
+
+/*##########################################################################
+#################### SET BRAND COLOR TO #006666 ############################
+###########################################################################*/
+
 
 /*######################################################
 ######################## NAVBAR ########################
@@ -125,7 +133,7 @@ header .page-header-headings {
         background-position: right top; // Fractal position
         background-repeat: no-repeat; // Display fractal once only
         background-attachment: scroll;
-        background-size: 300px 65px;
+        background-size: 300px 70px;
     }
 }
 
@@ -164,6 +172,15 @@ div.context-header-settings-menu div.action-menu div.action-menu-trigger {
     background-image: none !important;
 }
 
+// action menu focus background color settings
+div#action-menu-2-menu div.dropdown-item:active, div#action-menu-10-menu div.dropdown-item:active,
+div#action-menu-2-menu div.dropdown-item.dropdown-item:hover, div#action-menu-10-menu div.dropdown-item.dropdown-item:hover,
+div#action-menu-2-menu div.dropdown-item.dropdown-item:focus, div#action-menu-10-menu div.dropdown-item.dropdown-item:focus,
+div#action-menu-2-menu div.dropdown-item.dropdown-item:focus-within, div#action-menu-10-menu div.dropdown-item.dropdown-item:focus-within {
+    outline: 0;
+    background-color: #0A7B7B;
+}
+
 /*#######################################################
 ###################### BREADCRUMB ######################
 #######################################################*/
@@ -188,24 +205,12 @@ ol.breadcrumb {
     padding: 0px 5px 0px 5px;
 }
 
-#page-header div div.card div.card-body div.d-flex.flex-wrap div.ml-auto.d-flex {
-    padding-top: 3px;
-}
-
 // FontAwesome Caret breadcrumb separator
 li.breadcrumb-item+li.breadcrumb-item:before {
     color: #fff !important;
     font-family: FontAwesome;
     content: "\f0da" !important; //fa-caret-right
 }
-
-//hide/show button size
-#hideShowButton {
-    padding: 0px 20px 0px 20px !important;
-    border: 0px !important;
-    height: 36px;
-}
-
 
 /*######################################################
 ###################### NAV DRAWER ######################
@@ -250,21 +255,22 @@ div.usermenu div.action-menu-trigger {
 }
 
 // Color and hover color for the user name and caret in the navbar
-ul.nav li.nav-item div.usermenu div.action-menu div.menubar div.action-menu-trigger div.dropdown a.dropdown-toggle {
+ul.nav li.nav-item div.usermenu div.action-menu#action-menu-1 div.menubar div.action-menu-trigger div.dropdown a.dropdown-toggle,
+ul.nav li.nav-item div.usermenu div.action-menu#action-menu-9 div.menubar div.action-menu-trigger div.dropdown a.dropdown-toggle{
     color: #fff;
     @include hover-focus {
         color: #999;
     }
-}
+} 
 
 // Color and hover color for the icons in the navbar
-div.popover-region-toggle.nav-link i.icon, nav ul li div i.icon:before {
+div.popover-region-toggle.nav-link i.icon, nav ul li div.popover-region i.icon:before {
     color: #fff !important;
     @include hover-focus {
         background: transparent;
         color: #999 !important;
     }
-}
+} 
 
 // Background color behind search icon
 div.d-none.d-lg-block {
@@ -273,9 +279,9 @@ div.d-none.d-lg-block {
 }
 
 // Color and hover color for the search icon in the navbar
-div.search-input-wrapper.nav-link i.icon {
+/*div.search-input-wrapper.nav-link i.icon {
     color: #fff;
-}
+}*/
 
 /*######################################################
 ################ CUSTOM MENU FONT COLOR ################
@@ -320,6 +326,8 @@ div.context-header-settings-menu div.action-menu div.action-menu-trigger div.dro
         color: #999
     }
 }
+
+
 
 // Removes the bottom padding from the header region to allow custom blocks directly under the header
 header#page-header div.col-12 {
@@ -367,32 +375,33 @@ div#nav-drawer {
 
 // Removes the top 50px margin from the page
 div#page {
-    margin: 0px 0px 0px 0px !important;
+    margin: 0px !important;
     padding: 0px !important;
     max-width: 100% !important;
-    }
+}
 
 // Removes the bottom padding from the page content
 div#page-content {
-    padding: 0px !important;
     margin: 0px !important;
+    padding: 0px !important;
+    max-width: 100% !important;
 }
 
 // Removes the bottom padding from the page wrapper
 div#page-wrapper {
-    padding: 0px !important;
+    padding-left: 0px !important;
 }
 
 // Removes the bottom margin from region-main
 section#region-main {
     margin: 0px !important;
     padding: 0px !important;
-    }
+}
 
 // Removes the side padding from region-main-box
 div#region-main-box {
     padding: 0px !important;
-    }
+}
 
 /*######################################################
 ######################## FOOTER ########################
@@ -424,29 +433,12 @@ section.block.block_html.card.mb-3 {
 
 //Removes the padding in the custom block regions
 
-// Left Block Region
-.columnleft.blockcolumn {
-    padding: 0px 16px 0px 0px !important;
-}
-
+// Right Block Region
 #block-region-side-pre .block.block_html .card-body {
     padding: 0px !important;
 }
 
 #block-region-side-pre .block .card-body .card-text {
-    margin: 0px !important;
-}
-
-// Right Block Region
-.columnright.blockcolumn {
-    padding: 0px 0px 0px 16px !important;
-}
-
-#block-region-side-post .block.block_html .card-body {
-    padding: 0px !important;
-}
-
-#block-region-side-post .block .card-body .card-text {
     margin: 0px !important;
 }
 
@@ -528,6 +520,7 @@ section.block.block_html.card.mb-3 {
 #block-region-lower-navdrawer .block .card-body .card-text {
     margin: 0px !important;
 }
+
 /*################### OPTIONAL #############################################################################*/
 
 /*######################################################
